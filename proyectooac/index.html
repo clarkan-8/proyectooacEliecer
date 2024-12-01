@@ -4,89 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulación de Interrupciones</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 800px;
-            margin: auto;
-        }
-
-        h1, h2 {
-            text-align: center;
-        }
-
-        .lista-componentes {
-            background-color: #ffd6e7;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        .lista-componentes ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .lista-componentes li {
-            padding: 5px 0;
-        }
-        input{
-            width: 150px;
-            padding: 5px;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: center;
-        }
-
-        button {
-            margin-top: 10px;
-            padding: 10px;
-            font-size: 16px;
-        }
-        #agb{
-            align-items: center;
-            align-self: center;
-            margin-left: 37%;
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="container">
-        <h1>Simulación de Interrupciones</h1>
+        <h1 class="titulo">Simulación de Interrupciones</h1>
 
         <div class="lista-componentes">
-            <h2>Componentes disponibles</h2>
+            <h2 class="titulo">Componentes disponibles</h2>
             <ul id="lista-componentes"></ul>
             <input type="text" id="nuevo-dispositivo" placeholder="Nombre del dispositivo" required>
-            <input type="text" id="nuevo-IRQ" placeholder="IRQ" required>
-            <input type="text" id="nuevo-duracion" placeholder="Duración" required>
-            <button  id="agb" onclick="">Agregar otro dispositivo</button>
+            <input type="number" id="nuevo-IRQ" placeholder="IRQ" required>
+            <input type="number" id="nuevo-duracion" placeholder="Duración" required>
+            <button  id="agb" onclick="AgregarDispositivo()" >Agregar otro dispositivo</button>
         </div>
 
         <button onclick="agregarInterrupcion()">Agregar Interrupción</button>
 
-        <h2>Tabla de Interrupciones</h2>
+        <h2 class="tablas">Tabla de Interrupciones</h2>
         <table>
             <thead>
                 <tr>
@@ -99,11 +34,36 @@
             <tbody id="tabla-interrupciones">
                 <!-- Filas dinámicas aquí -->
             </tbody>
+        </table>  
+        <h2 class="tablas">Diagrama de control de procesos</h2>
+        <table>
+            <thead id="cabezadetabla">   
+            </thead>
+            <tbody id="cuerpo-tabla">
+                <!-- Aquí se agregarán las filas dinámicas -->
+            </tbody>
         </table>
+        <button class="boton" onclick="agregaraDiag()" >Listo</button>
+        
+        <h2 class="tablas">Bitacora de Interrupciones</h2>
+        <table>
+            <th>Tiempo real donde se desea monitorear el proceso</th>
+            <th>Area o dispositivo donde se  encuentra  en este momento el control del proceso</th>
+            <th>Interrupción afecta al dispositivo antes que culmine este proceso</th>
+            <th>Rango de Tiempo en 
+                el dispositivo o área, 
+                con interrupción o 
+                sin ella. Cuándo 
+                entró y cuándo salió</th>
+                <th>Tiempo 
+                    faltante para 
+                    culminar la 
+                    tarea (seg), si 
+                    fue 
+                    interrumpido </th>
+        </table>
+        
     </div>
-
-    <script src="javascript.js">
-
-    </script>
+    <script src="javascript.js"></script>
 </body>
 </html>
