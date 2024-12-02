@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación de Interrupciones</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* Correcciones para centrar y alinear las tablas */
+        .table-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: auto; /* Ajusta el ancho automáticamente según el contenido */
+            margin: 0 auto; /* Centra la tabla */
+            text-align: center; /* Centra el texto dentro de las celdas */
+        }
+
+        table th, table td {
+            padding: 8px;
+            text-align: center;
+            width: 120px; /* Asegura columnas uniformes */
+            border: 1px solid #ccc; /* Agrega bordes */
+        }
+
+        table th {
+            font-weight: bold;
+            background-color: #f0f0f0; /* Fondo claro para el encabezado */
+        }
+
+        .titulo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .boton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .boton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="titulo">Simulación de Interrupciones</h1>
+
+        <div class="lista-componentes">
+            <h2 class="titulo">Componentes disponibles</h2>
+            <ul id="lista-componentes"></ul>
+            <input type="text" id="nuevo-dispositivo" placeholder="Nombre del dispositivo" required>
+            <input type="number" id="nuevo-IRQ" placeholder="IRQ" required>
+            <input type="number" id="nuevo-duracion" placeholder="Duración" required>
+            <button id="agb" onclick="AgregarDispositivo()">Agregar otro dispositivo</button>
+        </div>
+
+        <button onclick="agregarInterrupcion()">Agregar Interrupción</button>
+
+        <h2 class="tablas">Tabla de Interrupciones</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Interrupción</th>
+                        <th>Dispositivo</th>
+                        <th>IRQ</th>
+                        <th>Duración</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-interrupciones">
+                    <!-- Filas dinámicas aquí -->
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="tablas">Diagrama de control de procesos</h2>
+        <div class="table-container">
+            <table>
+                <thead id="cabezadetabla">
+                    <!-- Encabezado dinámico aquí -->
+                </thead>
+                <tbody id="cuerpo-tabla">
+                    <!-- Aquí se agregarán las filas dinámicas -->
+                </tbody>
+            </table>
+        </div>
+        
+        <button class="boton" onclick="agregaraDiag()">Listo</button>
+        
+        <h2 class="tablas">Bitácora de Interrupciones</h2>
+        <div class="table-container">
+            <table id="tabla-bitacora">
+                <thead>
+                    <tr>
+                        <th>Tiempo real donde se desea monitorear el proceso</th>
+                        <th>Área o dispositivo donde se encuentra en este momento el control del proceso</th>
+                        <th>Interrupción afecta al dispositivo antes que culmine este proceso</th>
+                        <th>Rango de Tiempo en el dispositivo, con interrupción o sin ella. Cuándo entró y cuándo salió</th>
+                        <th>Tiempo faltante para culminar la tarea (seg), si fue interrumpido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Filas dinámicas aquí -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="javascript.js"></script>
+</body>
+</html>
